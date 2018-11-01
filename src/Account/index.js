@@ -17,14 +17,27 @@ class Account extends Component {
     })
     this.inputBox.value = '';
   }
+  handleWithdrawClick=(e)=>{
+    e.preventDefault();
+    const amount = parseInt(this.inputBox.value);
+    const newBalance = this.state.balance - amount;
+    if(newBalance < 0){
+      alert('insufficent funds')
+      return;
+    }
+    this.setState({
+      balance: newBalance
+    })
+    this.inputBox.value = '';
+  }
   render() {
     return (
       <div className="account">
         <h2>{this.props.name}</h2>
-        <div className="balance">$0</div>
+        <div className="balance">${this.state.balace}</div>
         <input type="text" placeholder="enter an amount" ref={(input) => this.inputBox = input} />
-        <input type="button" value="Deposit" />
-        <input type="button" value="Withdraw" />
+        <input type="button" value="Deposit" onClick={this.handleDepositClick} />
+        <input type="button" value="Withdraw" onClick={this.handleWithdrawClick} />
       </div>
     )
   }
