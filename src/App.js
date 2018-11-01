@@ -3,6 +3,10 @@ import logo from './ga.png';
 import Account from './Account';
 
 class App extends Component {
+  constructor (){
+    super()
+    this.state
+  }
   render() {
     return (
       <div id="content">

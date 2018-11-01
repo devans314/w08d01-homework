@@ -2,6 +2,21 @@ import React, { Component } from 'react';
 
 
 class Account extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      balance: 0,
+    }
+  }
+  handleDepositClick=(e)=>{
+    e.preventDefault();
+    const amount = parseInt(this.inputBox.value);
+    const newBalance = this.state.balance + amount;
+    this.setState({
+      balance: newBalance
+    })
+    this.inputBox.value = '';
+  }
   render() {
     return (
       <div className="account">
